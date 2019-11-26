@@ -25,29 +25,38 @@ Terraform Provider
 Requirements
 ------------
 
--	[Terraform](https://www.terraform.io/downloads.html) 0.10.x
+-	[Terraform](https://www.terraform.io/downloads.html) 0.12.x
 -	[Go](https://golang.org/doc/install) 1.11 (to build the provider plugin)
 
 Building The Provider
 ---------------------
 
-Clone repository to: `$GOPATH/src/github.com/terraform-providers/terraform-provider-ultradns`
+Clone repository to: `$GOPATH/src/github.com/terraform-providers/terraform-provider-ultradns` and built it   
 
 ```sh
 $ mkdir -p $GOPATH/src/github.com/terraform-providers; cd $GOPATH/src/github.com/terraform-providers
-$ git clone git@github.com:terraform-providers/terraform-provider-ultradns
-```
-
-Enter the provider directory and build the provider
-
-```sh
+$ git clone https://github.com/smehboub/terraform-provider-ultradns.git
 $ cd $GOPATH/src/github.com/terraform-providers/terraform-provider-ultradns
+$ GO111MODULE=on go get github.com/hashicorp/terraform@v0.12.0
+$ GO111MODULE=on go mod tidy
+$ GO111MODULE=on go mod vendor
 $ make build
 ```
 
-Using the provider
-----------------------
-## Fill in for each provider
+Copy the provider to terraform plugins location   
+-	[Terraform plugins locations](https://www.terraform.io/docs/extend/how-terraform-works.html#plugin-locations)
+
+Using the built provider
+------------------------
+
+Open a terminal (GIT BASH for Windows or a another for Linux and macOS)   
+
+```sh
+$ git clone https://github.com/smehboub/terraform-provider-ultradns.git
+$ cd terraform-provider-ultradns/scripts
+$ chmod 700 install-provider.sh
+$ ./install-provider.sh
+```
 
 Developing the Provider
 ---------------------------
